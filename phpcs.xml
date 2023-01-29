@@ -1,0 +1,42 @@
+<?xml version='1.0'?>
+<ruleset name='SHC Copyright Block'>
+    <description>Ruleset for SHC Copyright Block.</description>
+
+    <!-- Show progress and sniff codes in all reports -->
+    <arg value='ps' />
+
+	<!-- What to scan -->
+	<file>.</file>
+	<exclude-pattern>*.min.css</exclude-pattern>
+    <exclude-pattern>/vendor/</exclude-pattern>
+    <exclude-pattern>/node_modules/</exclude-pattern>
+    <exclude-pattern>/tests/wp/</exclude-pattern>
+    <exclude-pattern>/tests/wp-tests-config.php</exclude-pattern>
+    <exclude-pattern>/tests/wp-tests-config-sample.php</exclude-pattern>
+    <exclude-pattern>Gruntfile.js</exclude-pattern>
+    <exclude-pattern>includes/blocks/**/*.js</exclude-pattern>
+    <exclude-pattern>unused/</exclude-pattern>
+
+	<!-- Make sure we're using WPCS -->
+    <rule ref='WordPress' />
+
+    <!-- Enforce space before closing parenthesis -->
+    <rule ref='Squiz.Functions.FunctionDeclarationArgumentSpacing.SpacingBeforeClose'>
+        <severity>5</severity>
+    </rule>
+
+    <rule ref='Squiz.PHP'>
+		<exclude name='Squiz.PHP.DisallowBooleanStatement.Found' />
+		<exclude name='Squiz.PHP.DisallowInlineIf.Found' />
+		<exclude name='Squiz.PHP.DisallowComparisonAssignment.AssignedComparison' />
+		<exclude name='Squiz.PHP.GlobalKeyword.NotAllowed' />
+		<exclude name='Squiz.Commenting.InlineComment.SpacingBefore' />
+		<exclude name='Squiz.PHP.Heredoc.NotAllowed' />
+
+		<!--
+			Having explicit `return`s at the end of void functions/methods
+			helps me to know EVERYWHERE a function/method returns.
+		  --> 
+        <exclude name='Squiz.PHP.NonExecutableCode.ReturnNotRequired' />
+	</rule>
+</ruleset>

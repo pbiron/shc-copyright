@@ -1,0 +1,28 @@
+{
+	"name": "shc/shc-copyright",
+	"description" : "Misc Gravity Forms Settings/etc Improvements",
+	"type" : "wordpress-plugin",
+	"license" : "GPL-2.0-or-later",
+	"authors" : [{
+			"name" : "Paul V. Biron",
+			"email" : "paul@sparrowhawkcomputing.com",
+			"homepage" : "https://sparrowhawkcomputing.com",
+			"role" : "Developer"
+		}
+	],
+	"config" : {
+		"sort-packages" : true
+	},
+	"minimum-stability" : "dev",
+	"autoload" : {
+		"classmap" : [
+			"plugin.php",
+			"includes"
+		]
+	},
+	"require-dev" : {
+		"dealerdirect/phpcodesniffer-composer-installer" : "^0.7.0",
+		"phpcompatibility/phpcompatibility-wp" : "^2.1.0",
+		"wp-coding-standards/wpcs" : "^2.3.0"
+	}
+}

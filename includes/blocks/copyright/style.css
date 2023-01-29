@@ -1,0 +1,21 @@
+:root {
+	/* themes can override this is their stylesheet */
+	--shc-copyright-statement-margin-bottom: 1em;
+}
+
+.wp-block-shc-copyright > .copyright-statement {
+	display: inline;
+}
+
+.wp-block-shc-copyright > .copyright-statement > p {
+	margin-bottom: var( --shc-copyright-statement-margin-bottom );
+	margin-top: 0;
+}
+
+.wp-block-shc-copyright > .copyright-statement > p:first-of-type {
+	display: inline-block;
+}
+
+.wp-block-shc-copyright > .copyright-statement > p:last-of-type {
+	margin-bottom: 0;
+}

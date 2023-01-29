@@ -1,0 +1,41 @@
+{
+	"$schema": "https://schemas.wp.org/trunk/block.json",
+	"apiVersion": 2,
+	"name": "shc/copyright",
+	"version": "0.9.0",
+	"title": "Copyright",
+	"category": "text",
+	"keywords": [ "copyright" ],
+	"description": "Output copyright statement, with years.",
+	"textdomain": "shc-copyright",
+	"attributes": {
+		"launchYear": {
+	  		"type": "integer",
+	  		"default": 0
+		},
+		"copyrightStatement": {
+			"type": "string",
+			"default": "<p>Copyright Statement.</p>"
+		},
+	    "align": {
+			"type": "string",
+			"enum": [ "", "left", "center", "right" ],
+			"default": ""
+	    }
+	},
+	"supports": {
+		"className": true,
+		"customClassName": true,
+		"html": false
+	},
+	"example": {
+		"attributes": {
+			"launchYear": 2020,
+			"copyrightStatement": "<p>Acme Widgets.</p><p>All rights reserved.</p>",
+			"align": "center"
+		}
+	},
+	"editorScript": "file:./copyright.js",
+	"style": [ "file:./style.css", "wp-block-library" ],
+	"render": "file:./render.php"
+}
