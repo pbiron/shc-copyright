@@ -4,7 +4,7 @@
 	"name": "shc/copyright",
 	"version": "0.9.0",
 	"title": "Copyright",
-	"category": "text",
+	"category": "theme",
 	"keywords": [ "copyright" ],
 	"description": "Output copyright statement, with years.",
 	"textdomain": "shc-copyright",
