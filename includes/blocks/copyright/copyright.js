@@ -136,7 +136,8 @@
 							value: copyrightStatement,
 							onChange: ( copyrightStatement ) => {
 								setAttributes( { copyrightStatement: copyrightStatement } )
-							}
+							},
+							placeholder: __( 'Copyright statement', 'shc-copyright' ),
 						},
 					),
 				)
