@@ -27,7 +27,7 @@ $classes = array(
 ?>
 
 <div class='<?php echo esc_attr( implode( ' ', array_filter( $classes ) ) ); ?>'>
-	&copy;
-	<span class='copyright-years'><?php echo esc_html( $copyright_years ); ?></span>
+	&copy;&nbsp;
+	<span class='copyright-years'><?php echo esc_html( $copyright_years ); ?></span>&nbsp;
 	<div class='copyright-statement'><?php echo wp_kses_post( $attributes['copyrightStatement'] ); ?></div>
 </div>
