@@ -111,7 +111,7 @@
 							},
 						),
 					),
-					decodeEntities( '&copy;' ) + ' ',
+					decodeEntities( '&copy;&nbsp;' ),
 					createElement(
 						'span',
 						{
@@ -125,8 +125,9 @@
 					  					? launchYear + decodeEntities( '&ndash;' ) + currentYear
 					  					: currentYear
 					  			  )
-				  		 ) + ' ',
+				  		 )
 					),
+					decodeEntities( '&nbsp;' ),
 					createElement(
 						RichText,
 						{
