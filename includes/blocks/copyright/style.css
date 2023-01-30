@@ -5,6 +5,7 @@
 
 .wp-block-shc-copyright > .copyright-statement {
 	display: inline;
+	text-decoration: inherit;
 }
 
 .wp-block-shc-copyright > .copyright-statement > p {

@@ -1,0 +1,6 @@
+.wp-block-shc-copyright > .copyright-years,
+.wp-block-shc-copyright > .copyright-statement,
+.wp-block-shc-copyright > .copyright-statement > p {
+	color: inherit !important;
+	font-size: inherit !important;
+}

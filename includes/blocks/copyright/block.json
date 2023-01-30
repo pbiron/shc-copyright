@@ -61,6 +61,7 @@
 		}
 	},
 	"editorScript": "file:./copyright.js",
+	"editorStyle": "file:./editor-style.css",
 	"style": [ "file:./style.css", "wp-block-library" ],
 	"render": "file:./render.php"
 }
