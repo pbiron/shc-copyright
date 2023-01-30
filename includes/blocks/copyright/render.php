@@ -1,6 +1,6 @@
 <?php
 /**
- * Render template for shc/copyright-block.
+ * Render template for shc/copyright block.
  *
  * @since 0.9.0
  *
