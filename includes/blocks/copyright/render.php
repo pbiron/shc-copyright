@@ -5,6 +5,7 @@
  * @since 0.9.0
  *
  * @var string[] $attributes The block attributes.
+ * @var string   $content    The block content (inner blocks).
  *
  * @package shc-copyright
  */
@@ -18,16 +19,8 @@ if ( ! $launch_year || $launch_year === $current_year ) {
 	$copyright_years = "{$launch_year}&ndash;{$current_year}";
 }
 
-$classes = array(
-	'wp-block-shc-copyright',
-	$attributes['align'] ? "has-text-align-{$attributes['align']}" : '',
-	! empty( $attributes['className'] ) ? $attributes['className'] : '',
-);
+$content = str_replace( '${COPYRIGHT_YEARS}', $copyright_years, $content );
 
-?>
+echo wp_kses_post( $content );
 
-<div class='<?php echo esc_attr( implode( ' ', array_filter( $classes ) ) ); ?>'>
-	&copy;&nbsp;
-	<span class='copyright-years'><?php echo esc_html( $copyright_years ); ?></span>&nbsp;
-	<div class='copyright-statement'><?php echo wp_kses_post( $attributes['copyrightStatement'] ); ?></div>
-</div>
+return;

@@ -143,5 +143,39 @@
 				)
 			];
 		},
+		
+		save( { attributes } ) {
+			const { copyrightStatement, align } = attributes;
+			const blockProps = useBlockProps.save(
+				{
+					key: 'block',
+					className: align ? 'has-text-align-' + align : '',
+				}
+			);
+			
+			return (			
+				createElement(
+					'div',
+					blockProps,
+					decodeEntities( '&copy;&nbsp;' ),
+					createElement(
+						'span',
+						{
+							className: 'copyright-years',
+						},
+						'${COPYRIGHT_YEARS}'
+					),
+					decodeEntities( '&nbsp;' ),
+					createElement(
+						RichText.Content,
+						{
+							tagName: 'div',
+							className: 'copyright-statement',
+							value: copyrightStatement,
+						}
+					)
+				)
+			);
+		}
 	} );
 } )( wp );
