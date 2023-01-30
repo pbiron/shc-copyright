@@ -77,12 +77,9 @@
 							onChange: ( launchYear ) => {
 								// insure 0 <= launchYear <= currentYear.
 								launchYear = parseInt( launchYear );
-
-								launchYear = launchYear < 0 || Number.isNaN( launchYear )
-									? launchYear = 0
-									: launchYear = Math.min( launchYear, currentYear );
-
-								setAttributes( { launchYear: launchYear } );
+								if ( 0 <= launchYear && launchYear <= currentYear ) {
+									setAttributes( { launchYear: launchYear } );
+								}
 							},
 						},
 					),
