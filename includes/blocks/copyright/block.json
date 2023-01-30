@@ -26,7 +26,30 @@
 	"supports": {
 		"className": true,
 		"customClassName": true,
-		"html": false
+		"html": false,
+		"color": {
+			"background": true,
+			"gradients": true,
+			"link": true,
+			"text": true
+		},
+		"spacing": {
+			"margin": true,
+			"padding": true
+		},
+		"typography": {
+			"fontSize": true,
+			"lineHeight": true,
+			"__experimentalFontFamily": true,
+			"__experimentalFontStyle": true,
+			"__experimentalFontWeight": true,
+			"__experimentalLetterSpacing": true,
+			"__experimentalTextDecoration": true,
+			"__experimentalTextTransform": true,
+			"__experimentalDefaultControls": {
+				"fontSize": true
+			}
+		}
 	},
 	"example": {
 		"attributes": {
