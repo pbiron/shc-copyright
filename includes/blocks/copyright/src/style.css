@@ -1,16 +1,19 @@
 :root {
-	/* themes can override this is their stylesheet */
+	/* themes can override these is their stylesheet */
 	--shc-copyright-statement-margin-bottom: 1em;
+	--shc-copyright-statement-margin-left: 0.5em;
 }
 
 .wp-block-shc-copyright > .copyright-statement {
 	display: inline;
+	margin-left: var( --shc-copyright-statement-margin-left );
 	text-decoration: inherit;
 }
 
 .wp-block-shc-copyright > .copyright-statement > p {
 	margin-bottom: var( --shc-copyright-statement-margin-bottom );
 	margin-top: 0;
+	text-decoration: inherit;
 }
 
 .wp-block-shc-copyright > .copyright-statement > p:first-of-type {

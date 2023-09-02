@@ -3,4 +3,5 @@
 .wp-block-shc-copyright > .copyright-statement > p {
 	color: inherit !important;
 	font-size: inherit !important;
+	text-decoration: inherit !important;
 }
