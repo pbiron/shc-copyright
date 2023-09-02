@@ -464,6 +464,17 @@ module.exports = function( grunt ) {
 			phpunit_ms: {
 				command: 'phpunit -c tests/phpunit/multisite.xml' + ( grunt.option( 'group' ) ? ' --group ' + grunt.option( 'group' ) : '' ),
 			},
+			wp_scripts_build_all_blocks: {
+				command: [
+					'npx wp-scripts build --webpack-src-dir=./includes/blocks/copyright/src --output-path=./includes/blocks/copyright/build',
+				].join( '&&')
+			},
+			wp_scripts_build_copyright: {
+				command: 'npx wp-scripts build --webpack-src-dir=./includes/blocks/copyright/src --output-path=./includes/blocks/copyright/build'
+			},
+			wp_scripts_start_copyright: {
+				command: 'npx wp-scripts start --webpack-src-dir=./includes/blocks/copyright/src --output-path=./includes/blocks/copyright/build'
+			},
 		},
 	} );
 
@@ -504,6 +515,10 @@ module.exports = function( grunt ) {
 	grunt.registerTask( 'phpcbf', [ 'shell:phpcbf' ] );
 	grunt.registerTask( 'phpunit', [ 'shell:phpunit' ] );
 	grunt.registerTask( 'phpunit_ms', [ 'shell:phpunit_ms' ] );
+
+	grunt.registerTask( 'build_blocks', [ 'shell:wp_scripts_build_all_blocks' ] );
+	grunt.registerTask( 'build_block_copyright', [ 'shell:wp_scripts_build_copyright' ] );
+	grunt.registerTask( 'start_block_copyright', [ 'shell:wp_scripts_start_copyright' ] );
 
 	// this task is normally only run early in the project, when I haven't
 	// yet decided on what namespace I want to use :-)

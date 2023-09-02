@@ -28,6 +28,7 @@
     "grunt-shell": "^3.0.1",
     "grunt-text-replace": "^0.4.0",
     "grunt-wp-readme-to-markdown": "^2.1.0",
-    "grunt-zip": "^0.18.2"
+    "grunt-zip": "^0.18.2",
+	"@wordpress/scripts": "^26.9.0"
   }
 }

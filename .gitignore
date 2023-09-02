@@ -11,3 +11,4 @@ node_modules
 tests/wp/
 tests/wp-tests-config.php
 wp-cli.yml
+includes/blocks/**/build
