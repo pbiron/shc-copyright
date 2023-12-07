@@ -5,3 +5,7 @@
 	font-size: inherit !important;
 	text-decoration: inherit !important;
 }
+
+.wp-block-shc-copyright div, .wp-block-shc-copyright p {
+	display: inline;
+}
