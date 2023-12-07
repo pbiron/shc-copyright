@@ -16,6 +16,7 @@
     <exclude-pattern>Gruntfile.js</exclude-pattern>
     <exclude-pattern>includes/blocks/**/build/</exclude-pattern>
     <exclude-pattern>includes/blocks/**/src/*.js</exclude-pattern>
+    <exclude-pattern>webpack.config.js</exclude-pattern>
     <exclude-pattern>unused/</exclude-pattern>
 
 	<!-- Make sure we're using WPCS -->
