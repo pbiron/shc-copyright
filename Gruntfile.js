@@ -464,16 +464,20 @@ module.exports = function( grunt ) {
 			phpunit_ms: {
 				command: 'phpunit -c tests/phpunit/multisite.xml' + ( grunt.option( 'group' ) ? ' --group ' + grunt.option( 'group' ) : '' ),
 			},
-			wp_scripts_build_all_blocks: {
-				command: [
-					'npx wp-scripts build --webpack-src-dir=./includes/blocks/copyright/src --output-path=./includes/blocks/copyright/build',
-				].join( '&&')
+			make_pot: {
+				// This assumes we're in the extension's root dir when running this task.  If not, the POT file will be written to the wrong dir.
+				command: 'wp i18n make-pot . languages/' + pkg.name + '.pot',
 			},
-			wp_scripts_build_copyright: {
-				command: 'npx wp-scripts build --webpack-src-dir=./includes/blocks/copyright/src --output-path=./includes/blocks/copyright/build'
+			// to build a specific block, run `grunt shell:build_block:bockname`, eg., `grunt shell:build_block:my-block` 
+			build_block: {
+				command: block => `npx wp-scripts build --webpack-src-dir=./includes/blocks/${block}/src --output-path=./includes/blocks/${block}/build`
 			},
-			wp_scripts_start_copyright: {
-				command: 'npx wp-scripts start --webpack-src-dir=./includes/blocks/copyright/src --output-path=./includes/blocks/copyright/build'
+			// to start/watch a specific block, run `grunt shell:build_block:bockname`, eg., `grunt shell:build_block:my-block` 
+			start_block: {
+				command: block => `npx wp-scripts start --webpack-src-dir=./includes/blocks/${block}/src --output-path=./includes/blocks/${block}/build`
+			},
+			phpstan: {
+				command: 'phpstan -v analyse',
 			},
 		},
 	} );
@@ -496,7 +500,7 @@ module.exports = function( grunt ) {
 	grunt.registerTask( 'default', [ 'build' ] );
 	grunt.registerTask( 'build', [ 'clean', 'autoload', 'uglify', /*'sass',*/ 'rtlcss', 'cssmin' ] );
 
-	grunt.registerTask( 'precommit', [ /*'phpunit', 'phpunit_ms',*/ 'phpcs', 'jshint:release' ] );
+	grunt.registerTask( 'precommit', [ 'phpstan', /*'phpunit', 'phpunit_ms',*/ 'phpcs', 'jshint:release' ] );
 	// build and package everything up into a ZIP suitable for installing on a WP site.
 	grunt.registerTask(
 		'package',
@@ -505,6 +509,7 @@ module.exports = function( grunt ) {
 			'readme', 'replace',
 			// make sure that autoloads for dev dependencies aren't included.'
 			'stash_composer_installed', 'autoload-release',
+			'shell:make_pot',
 			'copy', 'zip:release', 'clean:release',
 			// rebuild autoloads with dev dependencies.'
 			'restore_composer_installed', 'autoload',
@@ -515,10 +520,34 @@ module.exports = function( grunt ) {
 	grunt.registerTask( 'phpcbf', [ 'shell:phpcbf' ] );
 	grunt.registerTask( 'phpunit', [ 'shell:phpunit' ] );
 	grunt.registerTask( 'phpunit_ms', [ 'shell:phpunit_ms' ] );
+	grunt.registerTask( 'phpstan', [ 'shell:phpstan' ] );
+	grunt.registerTask( 'make_pot', [ 'shell:make_pot' ] );
 
-	grunt.registerTask( 'build_blocks', [ 'shell:wp_scripts_build_all_blocks' ] );
-	grunt.registerTask( 'build_block_copyright', [ 'shell:wp_scripts_build_copyright' ] );
-	grunt.registerTask( 'start_block_copyright', [ 'shell:wp_scripts_start_copyright' ] );
+	grunt.registerTask( 'build_block', function( block ) {
+		if ( ! require( 'fs' ).existsSync( 'includes/blocks/' + block + '/src/block.json' ) ) {
+			grunt.log.error( '"' + block + '" can\'t be built because it has no src/block.json.' );
+
+			return false;
+		}
+
+		grunt.task.run( 'shell:build_block:' + block );
+	} );
+	grunt.registerTask( 'start_block', function( block ) {
+		if ( ! require( 'fs' ).existsSync( 'includes/blocks/' + block + '/src/block.json' ) ) {
+			grunt.log.error( block + ' can\'t be started because it has no src/block.json.' );
+
+			return false;
+		}
+
+		grunt.task.run( 'shell:start_block:' + block );
+	} );
+	grunt.registerTask( 'build_blocks', 'Build all the blocks in the includes/blocks directory', function() {
+		const blocks = require( 'fs' ).readdirSync( 'includes/blocks' );
+
+		blocks.forEach( ( block ) => {
+			grunt.task.run( 'build_block:' + block );
+		} );
+	} );
 
 	// this task is normally only run early in the project, when I haven't
 	// yet decided on what namespace I want to use :-)
