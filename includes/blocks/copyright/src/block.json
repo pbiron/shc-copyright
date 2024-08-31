@@ -59,8 +59,8 @@
 			"align": "center"
 		}
 	},
-	"editorScript": "file:./copyright.js",
-	"editorStyle": "file:./copyright.css",
-	"style": [ "file:./style-copyright.css", "wp-block-library" ],
+	"editorScript": "file:./index.js",
+	"editorStyle": "file:./index.css",
+	"style": [ "file:./style-index.css", "wp-block-library" ],
 	"render": "file:./render.php"
 }

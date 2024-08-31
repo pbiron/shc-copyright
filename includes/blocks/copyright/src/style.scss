@@ -1,0 +1,27 @@
+:root {
+	/* themes can override these is their stylesheet */
+	--shc-copyright-statement-margin-bottom: 1em;
+	--shc-copyright-statement-margin-left: 0.5em;
+}
+
+.wp-block-shc-copyright {
+	.copyright-statement {
+		display: inline-block;
+		margin-left: var( --shc-copyright-statement-margin-left );
+		text-decoration: inherit;
+		
+		p {
+			margin-bottom: var( --shc-copyright-statement-margin-bottom );
+			margin-top: 0;
+			text-decoration: inherit;
+		}
+		
+		p:first-of-type {
+			display: inline-block;
+		}
+		
+		p:last-of-type {
+			margin-bottom: 0;
+		}
+	}
+}

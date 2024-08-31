@@ -1,0 +1,14 @@
+.wp-block-shc-copyright {
+	> .copyright-years,
+	> .copyright-statement,
+	> .copyright-statement > p {
+		color: inherit !important;
+		font-size: inherit !important;
+		text-decoration: inherit !important;
+	}
+	
+	div,
+	p {
+		display: inline-block;
+	}
+}
