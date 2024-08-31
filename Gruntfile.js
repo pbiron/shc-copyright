@@ -505,7 +505,7 @@ module.exports = function( grunt ) {
 	grunt.registerTask(
 		'package',
 		[
-			'build', 'precommit',
+			'build', 'precommit', 'build_blocks',
 			'readme', 'replace',
 			// make sure that autoloads for dev dependencies aren't included.'
 			'stash_composer_installed', 'autoload-release',
