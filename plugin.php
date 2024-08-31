@@ -2,7 +2,7 @@
 /**
  * Plugin Name:       Copyright Block
  * Description:       Block that outputs copyright statement, with years
- * Version:           0.9.0
+ * Version:           0.9.1
  * Author:            Paul V. Biron/Sparrow Hawk Computing
  * Plugin URI:        https://github.com/pbiron/shc-copyright
  * License:           GPL-2.0-or-later
@@ -29,7 +29,7 @@ add_action( 'init', 'shc_copyright_init' );
  */
 function shc_copyright_init() {
 	// register our block.
-	register_block_type_from_metadata( __DIR__ . '/includes/blocks/copyright' );
+	register_block_type( __DIR__ . '/includes/blocks/copyright/build/block.json' );
 
 	// load translations for our editor script.
 	wp_set_script_translations( 'shc-copyright-editor-script', 'shc-copyright' );

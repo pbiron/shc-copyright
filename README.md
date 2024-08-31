@@ -1,10 +1,10 @@
 # Copyright Block #
 
-**Contributors:** [pbiron](https://profiles.wordpress.org/pbiron)  
+**Contributors:** [pbiron](https://profiles.wordpress.org/pbiron/)  
 **Tags:** copyright  
 **Requires at least:** 6.1  
-**Tested up to:** 6.1.1  
-**Stable tag:** 0.9.0  
+**Tested up to:** 6.6.1  
+**Stable tag:** 0.9.1  
 **License:** GPL-2.0-or-later  
 **License URI:** https://www.gnu.org/licenses/gpl-2.0.html  
 
@@ -43,6 +43,10 @@ Useful tasks that are defined in Gruntfile.js
     * rebuilds the Composer autoloader.  Useful if/when you add a new PHP class to the plugin
 
 ## Changelog ##
+
+### 0.9.1 (2024-08-31) ###
+
+* Major rewrite
 
 ### 0.9.0 (2023-01-29) ###
 
