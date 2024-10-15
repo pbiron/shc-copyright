@@ -479,6 +479,13 @@ module.exports = function( grunt ) {
 			phpstan: {
 				command: 'phpstan -v analyse',
 			},
+			plugin_check: {
+				command: [
+					'wp plugin activate plugin-check --quiet',
+					'wp plugin check ' + pkg.name + ' --skip-plugins=shc-faqs --exclude-directories=releases,unused,tests --exclude-files=.editorconfig,.gitattributes,.gitignore,.jshintrc,.phpunit.result.cache --exclude-checks=trademarks,plugin_updater',
+					'wp plugin deactivate plugin-check --quiet',
+				].join( '&&' )
+			},
 		},
 	} );
 
@@ -500,7 +507,7 @@ module.exports = function( grunt ) {
 	grunt.registerTask( 'default', [ 'build' ] );
 	grunt.registerTask( 'build', [ 'clean', 'autoload', 'uglify', /*'sass',*/ 'rtlcss', 'cssmin' ] );
 
-	grunt.registerTask( 'precommit', [ 'phpstan', /*'phpunit', 'phpunit_ms',*/ 'phpcs', 'jshint:release' ] );
+	grunt.registerTask( 'precommit', [ 'phpstan', /*'phpunit', 'phpunit_ms',*/ 'phpcs', 'plugin-check', 'jshint:release' ] );
 	// build and package everything up into a ZIP suitable for installing on a WP site.
 	grunt.registerTask(
 		'package',
@@ -521,6 +528,7 @@ module.exports = function( grunt ) {
 	grunt.registerTask( 'phpunit', [ 'shell:phpunit' ] );
 	grunt.registerTask( 'phpunit_ms', [ 'shell:phpunit_ms' ] );
 	grunt.registerTask( 'phpstan', [ 'shell:phpstan' ] );
+	grunt.registerTask( 'plugin-check', [ 'shell:plugin_check' ] );
 	grunt.registerTask( 'make_pot', [ 'shell:make_pot' ] );
 
 	grunt.registerTask( 'build_block', function( block ) {
