@@ -167,7 +167,7 @@ module.exports = function( grunt ) {
 			release: {
 				expand: true,
 				src: [
-					'plugin.php', 'readme.txt', 'assets/**',
+					'plugin.php', 'readme.txt', 'assets/**', 'languages/**',
 					'includes/**', 'admin/**','utils/**',
 					'vendor/composer/**', 'vendor/autoload.php',
 
@@ -194,7 +194,7 @@ module.exports = function( grunt ) {
 				expand: true,
 				cwd: '.',
 				src: '<%= pkg.name %>/**',
-				dest: '<%= pkg.name %>.<%= pkg.version %>.zip',
+				dest: 'releases/<%= pkg.base_version %>/<%= pkg.name %>-<%= pkg.version %>.zip',
 			},
 		},
 
