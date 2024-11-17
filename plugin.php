@@ -32,7 +32,7 @@ function shc_copyright_init() {
 	register_block_type( __DIR__ . '/includes/blocks/copyright/build/block.json' );
 
 	// load translations for our editor script.
-	wp_set_script_translations( 'shc-copyright-editor-script', 'shc-copyright' );
+	wp_set_script_translations( 'shc-copyright-editor-script', 'shc-copyright', plugin_dir_path( __FILE__ ) . 'languages' );
 
 	return;
 }
