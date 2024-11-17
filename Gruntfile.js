@@ -466,7 +466,11 @@ module.exports = function( grunt ) {
 			},
 			make_pot: {
 				// This assumes we're in the extension's root dir when running this task.  If not, the POT file will be written to the wrong dir.
-				command: 'wp i18n make-pot . languages/' + pkg.name + '.pot',
+				command: 'wp i18n make-pot . languages/' + pkg.name + '.pot --exclude=includes/blocks/**/src,unused',
+			},
+			make_json: {
+				// This assumes we're in the extension's root dir when running this task.  If not, the POT file will be written to the wrong dir.
+				command: 'wp i18n make-json languages --no-purge',
 			},
 			// to build a specific block, run `grunt shell:build_block:bockname`, eg., `grunt shell:build_block:my-block` 
 			build_block: {
@@ -529,7 +533,8 @@ module.exports = function( grunt ) {
 	grunt.registerTask( 'phpunit_ms', [ 'shell:phpunit_ms' ] );
 	grunt.registerTask( 'phpstan', [ 'shell:phpstan' ] );
 	grunt.registerTask( 'plugin-check', [ 'shell:plugin_check' ] );
-	grunt.registerTask( 'make_pot', [ 'shell:make_pot' ] );
+	grunt.registerTask( 'make-pot', [ 'shell:make_pot' ] );
+	grunt.registerTask( 'make-json', [ 'shell:make_json' ] );
 
 	grunt.registerTask( 'build_block', function( block ) {
 		if ( ! require( 'fs' ).existsSync( 'includes/blocks/' + block + '/src/block.json' ) ) {
