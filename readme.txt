@@ -2,9 +2,9 @@
 
 Contributors: pbiron
 Tags: copyright
-Requires at least: 6.1
-Tested up to: 6.6.1
-Stable tag: 0.9.1
+Requires at least: 6.6
+Tested up to: 6.7
+Stable tag: 0.9.2
 License: GPL-2.0-or-later
 License URI: https://www.gnu.org/licenses/gpl-2.0.html
 
@@ -43,6 +43,11 @@ Useful tasks that are defined in Gruntfile.js
     * rebuilds the Composer autoloader.  Useful if/when you add a new PHP class to the plugin
 
 == Changelog ==
+
+= 0.9.2 (2024-11-17) =
+
+* Enhancements
+    * Now capable of loading translations for our block JS
 
 = 0.9.1 (2024-08-31) =
 
